@@ -3,6 +3,7 @@ package dataFrame;
 import java.util.Objects;
 
 public class MyDouble extends Value{
+    public MyDouble(){super();}
     public MyDouble(String d){
         super(d);
         this.val = Double.parseDouble(d);

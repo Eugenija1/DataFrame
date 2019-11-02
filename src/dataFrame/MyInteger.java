@@ -12,7 +12,7 @@ public class MyInteger extends Value{
     public String toString(){
         return String.valueOf(this.val);
     }
-    public Value add(Value val) throws Throwable {
+    public Value add(Value val) throws IllegalArgumentException {
         if(val instanceof MyInteger)
             this.val = this.getInteger() + ((MyInteger) val).getInteger();
         else

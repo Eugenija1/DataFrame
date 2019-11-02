@@ -17,10 +17,10 @@ public  class COOValue extends Value{
     public Object getElement(){
         return this.element;
     }
-    public MyString toString(){
+    public String toString(){
         return "("+ getPosition() +", "+getElement()+")";
     }
-    public Value add(Value val) throws Throwable{
+    public Value add(Value val){
         if(val instanceof COOValue)
             try {
                 int value = (int) element;
@@ -138,7 +138,7 @@ public  class COOValue extends Value{
         return Objects.hash(position, element);
     }
 
-    public Value create(MyString s){ //TODO
+    public Value create(String s){ //TODO
         this.val = java.lang.Double.parseDouble(s);
         return this;
     };

@@ -6,8 +6,8 @@ public abstract class Value {
     public Value() {}
     public Object getVal(){return this.val;}
     public abstract String toString();
-    public abstract Value add(Value val) throws Throwable;
-    public abstract Value sub(Value val) throws Throwable;
+    public abstract Value add(Value val);
+    public abstract Value sub(Value val);
     public abstract Value mul(Value val);
     public abstract Value div(Value val);
     public abstract Value pow(Value val);

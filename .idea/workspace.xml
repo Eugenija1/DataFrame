@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4ef4f74-60bd-4bf3-a228-9d3a031b1868" name="Default Changelist" comment="" />
+    <list default="true" id="f4ef4f74-60bd-4bf3-a228-9d3a031b1868" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dataFrame/DateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/COOValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/COOValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/Column.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyFloat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyInteger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyInteger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/Value.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +28,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1RnbZp6a2XcUbbweF1ScLP0frNx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../DFadam/src/dataFrame/DataFrame.java" />
@@ -110,28 +128,44 @@
       <workItem from="1571501140481" duration="49366000" />
       <workItem from="1572096163128" duration="5611000" />
       <workItem from="1572293330733" duration="11301000" />
-      <workItem from="1572616895688" duration="4836000" />
+      <workItem from="1572616895688" duration="22851000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>190</line>
+          <line>205</line>
           <properties class="dataFrame.DataFrame">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="15" />
+          <line>24</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -5,14 +5,14 @@ import java.util.Objects;
 public class MyFloat extends Value{
     public MyFloat(String f){
         super(f);
-        this.val = Integer.parseInt(f);
+        this.val = Float.parseFloat(f);
     }
     public float getFloat(){return (float) this.val;}
 
     public String toString(){
         return String.valueOf(this.val);
     }
-    public Value add(Value val) {
+    public Value add(Value val) throws IllegalArgumentException{
         if(val instanceof MyFloat)
             this.val = this.getFloat() + ((MyFloat) val).getFloat();
         else

@@ -1,15 +1,22 @@
 package dataFrame;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class DataFrame implements Cloneable{
     protected List<Column> allColumns;
 
-    public static void main(String[] args) throws IOException, CloneNotSupportedException, ClassNotFoundException {
-        DataFrame df = new DataFrame("C:\\Users\\Berezka\\IdeaProjects\\L1ZD\\src\\data.csv",new String[]{"int","float","string"},
-                null);
+    public static void main(String[] args) throws IOException, CloneNotSupportedException, ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        ArrayList<Class <? extends Value>> types = new ArrayList<>();
+        types.add(MyDouble.class);
+        types.add(MyDouble.class);
+        types.add(MyDouble.class);
+        DataFrame df = new DataFrame("C:\\Users\\Berezka\\IdeaProjects\\L1ZD\\src\\data.csv",types, null);
 //       // df.fillColumns();
         System.out.println(df.allColumns.get(0).getNameOfColumn());
         System.out.println(df.allColumns.get(1).getNameOfColumn());
@@ -30,14 +37,14 @@ public class DataFrame implements Cloneable{
     }
     public DataFrame(){allColumns = new ArrayList<Column>();}
 
-    public DataFrame(String[] nameCol, String[] types) {
-        if (nameCol.length != types.length) {
+    public DataFrame(String[] nameCol, ArrayList<Class <? extends Value>> types) {
+        if (nameCol.length != types.size()) {
             throw new IllegalArgumentException("Number of columnNames and columnTypes are not equal.");
         }
         allColumns = new ArrayList<Column>();
         int i = 0;
-        for (String s : types) {
-            allColumns.add(new Column<>(nameCol[i], types[i]));
+        for (Class cl : types) {
+            allColumns.add(new Column<>(nameCol[i], cl));
             ++i;
         }
     }
@@ -91,26 +98,35 @@ public class DataFrame implements Cloneable{
 //
 //    }
 
-    public void addRaw(Object[] args){
+    public <cls> void addRaw(Object[] args, ArrayList<Class <? extends Value>> columnTypes) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         if(args.length > allColumns.size()){
             throw new IllegalArgumentException("Too many arguments");
         }
         else if(args.length < allColumns.size()){
             throw new IllegalArgumentException("Too little arguments");
         }
+        Object v;
         for (int i=0; i<args.length; i++){
-            allColumns.get(i).addToColumn(args[i]);
+            Class cls = columnTypes.get(i);
+            Constructor<?> ctr = cls.getConstructor(String.class);
+            v = ctr.newInstance(args[i].toString());
+
+            allColumns.get(i).addToColumn((cls) v);
+
+            //cls d = (cls) v;
+
+//            ((Value) v).create(args[i].toString());
         }
     }
 
-    public DataFrame(String fileName, String[] columnTypes, String[] columnNames) throws IOException {
+    public DataFrame(String fileName, ArrayList<Class <? extends Value>> columnTypes, String[] columnNames) throws IOException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         FileInputStream fileStream = new FileInputStream(fileName);
         BufferedReader br = new BufferedReader(new InputStreamReader(fileStream));
 
         if(columnNames != null){
             allColumns = new ArrayList<>();
             for (int i=0; i<columnNames.length; i++) {
-                allColumns.add(new Column(columnNames[i], columnTypes[i]));
+                allColumns.add(new Column(columnNames[i], columnTypes.get(i)));
             }
         }
 
@@ -125,14 +141,14 @@ public class DataFrame implements Cloneable{
 
             allColumns = new ArrayList<>();
             for (int i=0; i<splitedArray.length; i++) {
-                allColumns.add(new Column(splitedArray[i], columnTypes[i]));
+                allColumns.add(new Column(splitedArray[i], columnTypes.get(i)));
             }
         }
 
         while ((strLine = br.readLine()) != null)  {
             splited = strLine;
             splitedArray = splited.split(",");
-            addRaw(splitedArray);
+            addRaw(splitedArray, columnTypes);
         }
         br.close();
     }
@@ -151,7 +167,7 @@ public class DataFrame implements Cloneable{
             for (Column col : allColumns) {
                 try {
                     COOValue value = (COOValue) col.getList().get(i);
-                    System.out.println(value.toString());
+                    System.out.printf("%35s", value.toString());
                 } catch (java.lang.ClassCastException nfe) {System.out.printf("%35s", col.getList().get(i));}
                 catch (java.lang.IndexOutOfBoundsException ind){System.out.printf("%35s", " ");}
             }
@@ -170,16 +186,15 @@ public class DataFrame implements Cloneable{
     public Column get(int i){
         return this.allColumns.get(i);
     }
-    public Column get(String colname){
+    public Column get(String colname) throws ClassNotFoundException {
         for(Column innerList: allColumns) {
             if (innerList.getNameOfColumn().equals(colname))
                 return innerList;
             else{
-                System.out.println("There's no such column!");
-                return new Column(" ", " ");
+                throw new ClassNotFoundException("There's no such column!");
             }
         }
-        return new Column(" ", " ");
+        throw new ClassNotFoundException("There're no such columns!");
     }
 
     private DataFrame(ArrayList<Column> columns) {
@@ -210,40 +225,40 @@ public class DataFrame implements Cloneable{
         }
     }
 
-    public DataFrame iloc (int i){
-        if(i<0 || i>size()){
-            throw new IndexOutOfBoundsException(i + " is out of bound.");
-        }
-        String[] namecols = new String[allColumns.size()];
-        String[] typecols = new String[allColumns.size()];
-        String[] record = new String[allColumns.size()];
-        for(int n =0; n<allColumns.size(); n++){
-                namecols[n] = allColumns.get(n).getNameOfColumn();
-                typecols[n] = allColumns.get(n).getTypeOfColumn();
-                record[n] = (String) allColumns.get(n).getElem(i-1);
-
-        }
-        DataFrame df2 = new DataFrame(namecols, typecols);
-        df2.addRaw(record);
-        return df2;
-    }
-
-    public DataFrame iloc(int from, int to){
-        String[] namecols = new String[allColumns.size()];
-        String[] typecols = new String[allColumns.size()];
-        String[] record = new String[allColumns.size()];
-        for(int n =0; n<allColumns.size(); n++){
-            namecols[n] = allColumns.get(n).getNameOfColumn();
-            typecols[n] = allColumns.get(n).getTypeOfColumn();
-        }
-        DataFrame df2 = new DataFrame(namecols, typecols);
-        for(int ind = from-1; ind<to; ind++) {
-            for(int n =0; n<allColumns.size(); n++){
-                record[n] = (String) allColumns.get(n).getElem(ind);
-            }
-            df2.addRaw(record);
-        }
-        return df2;
-    }
+//    public DataFrame iloc (int i){
+//        if(i<0 || i>size()){
+//            throw new IndexOutOfBoundsException(i + " is out of bound.");
+//        }
+//        String[] namecols = new String[allColumns.size()];
+//        String[] typecols = new String[allColumns.size()];
+//        String[] record = new String[allColumns.size()];
+//        for(int n =0; n<allColumns.size(); n++){
+//                namecols[n] = allColumns.get(n).getNameOfColumn();
+//                typecols[n] = allColumns.get(n).getTypeOfColumn();
+//                record[n] = (String) allColumns.get(n).getElem(i-1);
+//
+//        }
+//        DataFrame df2 = new DataFrame(namecols, typecols);
+//        df2.addRaw(record);
+//        return df2;
+//    }
+//
+//    public DataFrame iloc(int from, int to){
+//        String[] namecols = new String[allColumns.size()];
+//        String[] typecols = new String[allColumns.size()];
+//        String[] record = new String[allColumns.size()];
+//        for(int n =0; n<allColumns.size(); n++){
+//            namecols[n] = allColumns.get(n).getNameOfColumn();
+//            typecols[n] = allColumns.get(n).getTypeOfColumn();
+//        }
+//        DataFrame df2 = new DataFrame(namecols, typecols);
+//        for(int ind = from-1; ind<to; ind++) {
+//            for(int n =0; n<allColumns.size(); n++){
+//                record[n] = (String) allColumns.get(n).getElem(ind);
+//            }
+//            df2.addRaw(record);
+//        }
+//        return df2;
+//    }
 
 }

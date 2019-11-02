@@ -1,15 +1,17 @@
 package dataFrame;
 
 public class MyString extends Value{
-    public MyString(MyString d){
+    public MyString(String d){
         super(d);
     }
-    public String getString(){return (String) this.val;}
+    public String getString(){
+        return (String) this.val;
+    }
 
     public String toString(){
         return this.getString();
     }
-    public Value add(Value val) throws Throwable {
+    public Value add(Value val) throws IllegalArgumentException {
         if(val instanceof MyString)
             this.val = this.getString() + ((MyString) val).getString();
         else

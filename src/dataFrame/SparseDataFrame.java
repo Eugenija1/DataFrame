@@ -1,6 +1,9 @@
 package dataFrame;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 
 public class SparseDataFrame extends DataFrame {
 
@@ -8,19 +11,23 @@ public class SparseDataFrame extends DataFrame {
     protected int size;
 
 
-    public static void main(String[] args) throws ClassNotFoundException, IOException {
+    public static void main(String[] args) throws ClassNotFoundException, IOException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        ArrayList<Class <? extends Value>> types = new ArrayList<>();
+        types.add(MyDouble.class);
+        types.add(MyDouble.class);
+        types.add(MyDouble.class);
 //        SparseDataFrame sdf = new SparseDataFrame(new String[]{"kol1","kol2"}, new String[]{"int","int"}, hide="0");
-        DataFrame df = new DataFrame("C:\\Users\\Berezka\\IdeaProjects\\L1ZD\\src\\sparse.csv", new String[]{"float", "float", "float"}, null);
+        DataFrame df = new DataFrame("C:\\Users\\Berezka\\IdeaProjects\\L1ZD\\src\\sparse.csv", types, null);
 //        DataFrame df = new DataFrame(new String[]{"kol1", "kol2", "kol3"}, new String[]{"float", "float", "float"});
 //        df.fillColumns();
 
-        df.printDF();
+//        df.printDF();
         SparseDataFrame sdf = new SparseDataFrame(df, "0");
         sdf.printDF();
         sdf.toDense().printDF();
     }
 
-    public SparseDataFrame(String[] names, String[] types, Object hide_){
+    public SparseDataFrame(String[] names, ArrayList<Class <? extends Value>> types, Object hide_){
         super(names, types);
         if(!checkTypes(types))
             throw new IllegalArgumentException("Types aren't equal");
@@ -38,24 +45,26 @@ public class SparseDataFrame extends DataFrame {
         }
         return sparseNames;
     }
-    public static String[] getSpTypes(DataFrame df){
-        String[] sparseTypes = new String[df.numOfColumns()];
+    public static ArrayList<Class <? extends Value>> getSpTypes(DataFrame df){
+        ArrayList<Class <? extends Value>> sparseTypes = new ArrayList<>(df.numOfColumns());
 
         for (int i=0; i<df.numOfColumns(); i++){
-            sparseTypes[i] = df.allColumns.get(i).getTypeOfColumn();
+            sparseTypes.add(df.allColumns.get(i).getTypeOfColumn());
         }
         return sparseTypes;
     }
 
-    public SparseDataFrame(DataFrame df, Object hide_) {
+    public <cls extends Value> SparseDataFrame(DataFrame df, Object hide_) throws IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
         this(getSpNames(df), getSpTypes(df), hide_);
-
+        Class cls = df.allColumns.get(0).getElem(0).getClass();
+        Constructor<?> ctr = cls.getConstructor(String.class);
+        cls val = (cls) ctr.newInstance((String) GetHide());
+        System.out.println(val);
         for (int i = 0; i < df.size(); i++) {
             for (int n = 0; n < numOfColumns(); n++) {
-                double d = java.lang.Double.parseDouble((String) df.allColumns.get(n).getElem(i));
-                double c = java.lang.Double.parseDouble((String) GetHide());
-                if (d != c){
-                    allColumns.get(n).addToColumn(new COOValue(i, df.allColumns.get(n).getElem(i)));
+                cls elem = (cls) df.allColumns.get(n).getElem(i);
+                if (!elem.equals(val)){
+                    allColumns.get(n).addToColumn(new COOValue(i, elem.add(new MyDouble("100000"))));
                 }
             }
         }
@@ -88,11 +97,11 @@ public class SparseDataFrame extends DataFrame {
         return df1;
     }
 
-    public boolean checkTypes(String[] types){
+    public boolean checkTypes(ArrayList<Class <? extends Value>> types){
         boolean flag = true;
-        String first = types[0];
-        for(int i = 1; i < types.length && flag; i++) {
-            if (!types[i].equals(first)) {
+        Class first = types.get(0);
+        for(int i = 1; i < types.size() && flag; i++) {
+            if (!types.get(i).equals(first)) {
                 flag = false;
                 return flag;
             }
