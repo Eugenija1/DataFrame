@@ -161,33 +161,41 @@ public class DataFrame implements Cloneable{
 
     protected class GroupedDF implements Groupby{
         LinkedList<DataFrame> listDF;
-        GroupedDF(DataFrame df, String colname) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-
-            Stream<Object> str = Arrays.stream(df.get(colname).getList().toArray());
-            List<Object> listStr= str.distinct().collect(Collectors.toList());
-
-            HashMap<Object, Integer> mapStream = new HashMap<>();
-            int mapSize = listStr.size();
-            for (int pos=0; pos<mapSize; pos++){
-                mapStream.put(listStr.get(pos), pos);
-            };
-
+        GroupedDF(DataFrame df, String[] colname) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+            HashMap<Integer, HashMap<Object, Integer>> mapOfMaps = new HashMap<>();
+            int sizeLinkedList = 1;
             listDF = new LinkedList<DataFrame>();
-
-            for(int i = 0; i< mapSize; i++){
-                listDF.add(new DataFrame(getNames(df), getTypes(df)));
+            for(int iter=0; iter<colname.length; iter++) {
+                Stream<Object> str = Arrays.stream(df.get(colname[iter]).getList().toArray());
+                List<Object> listStr = str.distinct().collect(Collectors.toList());
+                HashMap<Object, Integer> mapStream = new HashMap<>();
+                for (int pos = 0; pos < listStr.size(); pos++) {
+                    mapStream.put(listStr.get(pos), pos + 1);
+                }
+                int mapSize = mapStream.size();
+                sizeLinkedList = sizeLinkedList * mapSize;
+                mapOfMaps.put(iter, mapStream);
             }
-
-            Object[] raw = new Object[numOfColumns()];
-            for(int n=0; n<df.size(); n++){
-                for(int wid=0; wid<df.numOfColumns(); wid++){
-                    raw[wid]=df.get(wid).getElem(n);
+                for (int i = 0; i < sizeLinkedList; i++) {
+                    listDF.add(new DataFrame(getNames(df), getTypes(df)));
                 }
 
-                listDF.get(mapStream.get(df.get(colname).getElem(n))).addRaw(raw, getTypes(df));
+                Object[] raw = new Object[numOfColumns()];
+            for (int n = 0; n < df.size(); n++) {
+                    for (int wid = 0; wid < df.numOfColumns(); wid++) {
+                        raw[wid] = df.get(wid).getElem(n);
+                    }
+                   int sizeMaps = mapOfMaps.size();
+                   double i = 10;
+                   double index=0;
+                   i = Math.pow(i, sizeMaps-1);
+                    for(int iter=0; iter<sizeMaps; iter++){
+                        index =index +  (mapOfMaps.get(iter).get(df.get(colname[iter]).getElem(n))-1)*i;
+                        i= i/10;
+                    }
+                    listDF.get((int)index).addRaw(raw, getTypes(df));
+                }
             }
-
-        }
         void printGroups(){
             for(DataFrame df : listDF) {
                 df.printDF();
@@ -195,7 +203,7 @@ public class DataFrame implements Cloneable{
         }
     }
 
-    public GroupedDF groupby(String colname) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public GroupedDF groupby(String[] colname) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         return new GroupedDF(this, colname);
     }
 
@@ -254,9 +262,6 @@ public class DataFrame implements Cloneable{
         for(Column innerList: allColumns) {
             if (innerList.getNameOfColumn().equals(colname))
                 return innerList;
-            else{
-                throw new ClassNotFoundException("There's no such column!");
-            }
         }
         throw new ClassNotFoundException("There're no such columns!");
     }
