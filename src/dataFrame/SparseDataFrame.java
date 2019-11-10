@@ -13,18 +13,20 @@ public class SparseDataFrame extends DataFrame {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         ArrayList<Class <? extends Value>> types = new ArrayList<>();
-        types.add(MyDouble.class);
+        types.add(MyString.class);
+        types.add(MyString.class);
         types.add(MyDouble.class);
         types.add(MyDouble.class);
 //        SparseDataFrame sdf = new SparseDataFrame(new String[]{"kol1","kol2"}, new String[]{"int","int"}, hide="0");
-        DataFrame df = new DataFrame("C:\\Users\\Berezka\\IdeaProjects\\L1ZD\\src\\sparse.csv", types, null);
+        DataFrame df = new DataFrame("C:\\Users\\Berezka\\IdeaProjects\\L1ZD\\src\\groubymulti.csv", types, null);
 //        DataFrame df = new DataFrame(new String[]{"kol1", "kol2", "kol3"}, new String[]{"float", "float", "float"});
 //        df.fillColumns();
 
 //        df.printDF();
-        SparseDataFrame sdf = new SparseDataFrame(df, "0");
-        sdf.printDF();
-        sdf.toDense().printDF();
+        df.groupby("id").printGroups();
+//        SparseDataFrame sdf = new SparseDataFrame(df, "0");
+//        sdf.printDF();
+//        sdf.toDense().printDF();
     }
 
     public SparseDataFrame(String[] names, ArrayList<Class <? extends Value>> types, Object hide_){
@@ -37,25 +39,25 @@ public class SparseDataFrame extends DataFrame {
     public Object GetHide(){
         return hide;
     }
-    public static String[] getSpNames(DataFrame df){
-        String[] sparseNames = new String[df.numOfColumns()];
-
-        for (int i=0; i<df.numOfColumns(); i++){
-            sparseNames[i] = df.allColumns.get(i).getNameOfColumn();
-        }
-        return sparseNames;
-    }
-    public static ArrayList<Class <? extends Value>> getSpTypes(DataFrame df){
-        ArrayList<Class <? extends Value>> sparseTypes = new ArrayList<>(df.numOfColumns());
-
-        for (int i=0; i<df.numOfColumns(); i++){
-            sparseTypes.add(df.allColumns.get(i).getTypeOfColumn());
-        }
-        return sparseTypes;
-    }
+//    public static String[] getNames(DataFrame df){
+//        String[] sparseNames = new String[df.numOfColumns()];
+//
+//        for (int i=0; i<df.numOfColumns(); i++){
+//            sparseNames[i] = df.allColumns.get(i).getNameOfColumn();
+//        }
+//        return sparseNames;
+//    }
+//    public static ArrayList<Class <? extends Value>> getTypes(DataFrame df){
+//        ArrayList<Class <? extends Value>> sparseTypes = new ArrayList<>(df.numOfColumns());
+//
+//        for (int i=0; i<df.numOfColumns(); i++){
+//            sparseTypes.add(df.allColumns.get(i).getTypeOfColumn());
+//        }
+//        return sparseTypes;
+//    }
 
     public <cls extends Value> SparseDataFrame(DataFrame df, Object hide_) throws IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
-        this(getSpNames(df), getSpTypes(df), hide_);
+        this(getNames(df), getTypes(df), hide_);
         Class cls = df.allColumns.get(0).getElem(0).getClass();
         Constructor<?> ctr = cls.getConstructor(String.class);
         cls val = (cls) ctr.newInstance((String) GetHide());
@@ -72,7 +74,7 @@ public class SparseDataFrame extends DataFrame {
     }
 
     public DataFrame toDense(){
-        DataFrame df1 = new DataFrame(getSpNames(this), getSpTypes(this));
+        DataFrame df1 = new DataFrame(getNames(this), getTypes(this));
         int n=0;
         int cp;
         COOValue cv;

@@ -1,12 +1,18 @@
 package dataFrame;
 
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DataFrame implements Cloneable{
     protected List<Column> allColumns;
@@ -151,6 +157,64 @@ public class DataFrame implements Cloneable{
             addRaw(splitedArray, columnTypes);
         }
         br.close();
+    }
+
+    protected class GroupedDF implements Groupby{
+        LinkedList<DataFrame> listDF;
+        GroupedDF(DataFrame df, String colname) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+
+            Stream<Object> str = Arrays.stream(df.get(colname).getList().toArray());
+            List<Object> listStr= str.distinct().collect(Collectors.toList());
+
+            HashMap<Object, Integer> mapStream = new HashMap<>();
+            int mapSize = listStr.size();
+            for (int pos=0; pos<mapSize; pos++){
+                mapStream.put(listStr.get(pos), pos);
+            };
+
+            listDF = new LinkedList<DataFrame>();
+
+            for(int i = 0; i< mapSize; i++){
+                listDF.add(new DataFrame(getNames(df), getTypes(df)));
+            }
+
+            Object[] raw = new Object[numOfColumns()];
+            for(int n=0; n<df.size(); n++){
+                for(int wid=0; wid<df.numOfColumns(); wid++){
+                    raw[wid]=df.get(wid).getElem(n);
+                }
+
+                listDF.get(mapStream.get(df.get(colname).getElem(n))).addRaw(raw, getTypes(df));
+            }
+
+        }
+        void printGroups(){
+            for(DataFrame df : listDF) {
+                df.printDF();
+            }
+        }
+    }
+
+    public GroupedDF groupby(String colname) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        return new GroupedDF(this, colname);
+    }
+
+
+    public static String[] getNames(DataFrame df){
+        String[] Names = new String[df.numOfColumns()];
+
+        for (int i=0; i<df.numOfColumns(); i++){
+            Names[i] = df.allColumns.get(i).getNameOfColumn();
+        }
+        return Names;
+    }
+    public static ArrayList<Class <? extends Value>> getTypes(DataFrame df){
+        ArrayList<Class <? extends Value>> Types = new ArrayList<>(df.numOfColumns());
+
+        for (int i=0; i<df.numOfColumns(); i++){
+            Types.add(df.allColumns.get(i).getTypeOfColumn());
+        }
+        return Types;
     }
 
     public void printDF() {

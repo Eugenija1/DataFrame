@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4ef4f74-60bd-4bf3-a228-9d3a031b1868" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dataFrame/DateTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dataFrame/Groupby.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/COOValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/COOValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/Column.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyDouble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyFloat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyInteger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyInteger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyString.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/Value.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -37,7 +30,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DFadam/src/dataFrame/DataFrame.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -128,8 +121,18 @@
       <workItem from="1571501140481" duration="49366000" />
       <workItem from="1572096163128" duration="5611000" />
       <workItem from="1572293330733" duration="11301000" />
-      <workItem from="1572616895688" duration="22851000" />
+      <workItem from="1572616895688" duration="23105000" />
+      <workItem from="1572899664380" duration="12135000" />
+      <workItem from="1573406559756" duration="7258000" />
     </task>
+    <task id="LOCAL-00001" summary="lab3 jakoś działa">
+      <created>1572708600520</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1572708600520</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,18 +143,24 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="lab3 jakoś działa" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab3 jakoś działa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>205</line>
+          <line>269</line>
           <properties class="dataFrame.DataFrame">
             <option name="EMULATED" value="true" />
           </properties>
@@ -159,13 +168,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>18</line>
+          <line>24</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="18" />
+          <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
+          <line>165</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
