@@ -23,7 +23,7 @@ public class SparseDataFrame extends DataFrame {
 //        df.fillColumns();
 
 //        df.printDF();
-        df.groupby(new String[]{"id", "date"}).printGroups();
+        df.groupby(new String[]{"id", "date"}).max().printDF();
 //        SparseDataFrame sdf = new SparseDataFrame(df, "0");
 //        sdf.printDF();
 //        sdf.toDense().printDF();

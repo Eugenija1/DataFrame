@@ -2,7 +2,7 @@ package dataFrame;
 
 import java.util.Objects;
 
-public class MyDouble extends Value{
+public class MyDouble extends Value implements Comparable {
     public MyDouble(){super();}
     public MyDouble(String d){
         super(d);
@@ -89,4 +89,9 @@ public class MyDouble extends Value{
         this.val = Double.parseDouble(s);
         return this;
     };
+
+    @Override
+    public int compareTo(Object o) {
+        return Double.compare(this.getDouble(), ((MyDouble) o).getDouble());
+    }
 }

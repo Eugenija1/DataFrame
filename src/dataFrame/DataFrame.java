@@ -1,5 +1,6 @@
 package dataFrame;
 
+import javax.xml.crypto.Data;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -92,8 +93,9 @@ public class DataFrame implements Cloneable{
 
     protected class GroupedDF implements Groupby{
         LinkedList<DataFrame> listDF;
+        String[] sortedColumns;
         GroupedDF(DataFrame df, String[] namesColumns) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-
+            sortedColumns = namesColumns;
             HashMap<Integer, HashMap<Object, Integer>> mapOfMaps = new HashMap<>(); //mapa w ktorej sa przefiltrowane mapy bez powtorzen,
             //klucz - element DF, wartosc - wskazuje do ktorej wyjsciowej DF przekierowac element
 
@@ -135,9 +137,44 @@ public class DataFrame implements Cloneable{
             }
         }
 
+        ArrayList<String> getColumnsToSort(DataFrame df){
+            String[] all = getNames(df);
+            int flag=-1;
+            ArrayList<String> notSortedColumns = new ArrayList<>();
+            for(String str : all){
+                for(int i=0; i<sortedColumns.length; i++) {
+                    if (str.equals(sortedColumns[i])){
+                        flag=-1;
+                        break;}
+                    else {
+                        flag = i;
+                    }
+                }
+                if(flag>=0)
+                    notSortedColumns.add(str);
+                }
+            return notSortedColumns;
+        }
+
         @Override
-        public DataFrame max() {
-            return null;
+        public DataFrame max() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+            DataFrame maxDF = new DataFrame(getNames(listDF.get(0)), getTypes(listDF.get(0)));
+            for(int a=0; a<listDF.size(); a++){
+                Object[] raw = new Object[listDF.get(a).numOfColumns()];
+                int i =0 ;
+                ArrayList<String> notSortedColumns = getColumnsToSort(listDF.get(a));
+                for (int b =0; b<listDF.get(a).numOfColumns(); b++){
+                    if(! notSortedColumns.contains(listDF.get(a).get(b).getNameOfColumn())){
+                        raw[b] = listDF.get(a).get(b).getElem(0);
+                    }
+                    else{
+                        raw[b] = Collections.max(listDF.get(a).get(notSortedColumns.get(i)).getList());
+                        i++;
+                    }
+            }
+            maxDF.addRaw(raw, getTypes(listDF.get(a)));
+            }
+            return maxDF;
         }
 
         @Override
@@ -165,10 +202,10 @@ public class DataFrame implements Cloneable{
             return null;
         }
 
-        @Override
-        public DataFrame apply() {
-            return null;
-        }
+//        @Override
+//        public DataFrame apply() {
+//            return null;
+//        }
     }
 
     public GroupedDF groupby(String[] namesColumns) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {

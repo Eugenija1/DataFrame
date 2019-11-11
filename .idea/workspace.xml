@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataFrame/Groupby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/Groupby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +128,7 @@
       <workItem from="1573406559756" duration="14126000" />
       <workItem from="1573423062280" duration="11382000" />
       <workItem from="1573476121882" duration="4000" />
-      <workItem from="1573476290437" duration="6220000" />
+      <workItem from="1573476290437" duration="12268000" />
     </task>
     <task id="LOCAL-00001" summary="lab3 jakoś działa">
       <created>1572708600520</created>
@@ -149,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573429628995</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="eeech.....">
+      <created>1573489546504</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573489546507</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,26 +187,24 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>242</line>
+          <line>279</line>
           <properties class="dataFrame.DataFrame">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
+          <line>139</line>
+          <properties class="dataFrame.DataFrame.GroupedDF" method="getColumnsToSort">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>21</line>
+          <line>22</line>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>132</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
