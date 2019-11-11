@@ -1,18 +1,15 @@
 package dataFrame;
 
-import javax.xml.crypto.Data;
-import java.io.*;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DataFrame implements Cloneable{
     protected List<Column> allColumns;
@@ -28,18 +25,6 @@ public class DataFrame implements Cloneable{
         System.out.println(df.allColumns.get(1).getNameOfColumn());
         System.out.println(df.allColumns.get(2).getNameOfColumn());
         df.get(new String[]{"x", "last"}, true);
-//        df.printDF();
-//        System.out.println("Kolumna 1: ");
-//        df.get("last").printColumn();
-//        System.out.println("Zwroci rzad o numerze: ");
-//        df.iloc(1).printDF();
-//        System.out.println("Zwroci rzady w zakresie: ");
-//        df.iloc(1, 2).printDF();
-//        System.out.println(df.size());
-//        System.out.println("nową DF z kolumnami, kopia shallow ");
-//        df.printDF(df.get(new String[]{"kol2","kol3"}, true));
-//        System.out.println("nową DF z kolumnami, kopia deep ");
-//        df.printDF(df.get(new String[]{"kol2","kol3"}, false));
     }
     public DataFrame(){allColumns = new ArrayList<Column>();}
 
@@ -55,55 +40,6 @@ public class DataFrame implements Cloneable{
         }
     }
 
-//    public void setAllColumns(List<Column> allColumns) {
-//        this.allColumns = allColumns;
-//    }
-//
-//    public void fillColumns() {
-//        this.allColumns.get(0).addToColumn(0.0);
-//        this.allColumns.get(0).addToColumn(0.0);
-//        this.allColumns.get(0).addToColumn(5.0);
-//        this.allColumns.get(0).addToColumn(4.0);
-//        this.allColumns.get(0).addToColumn(0.0);
-//        this.allColumns.get(0).addToColumn(0.0);
-//        this.allColumns.get(0).addToColumn(0.0);
-//        this.allColumns.get(0).addToColumn(0.0);
-//        this.allColumns.get(0).addToColumn(0.0);
-//        this.allColumns.get(0).addToColumn(0.0);
-//        this.allColumns.get(0).addToColumn(2.0);
-//        this.allColumns.get(0).addToColumn(0.0);
-//        this.allColumns.get(0).addToColumn(0.0);
-//
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(7.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(3.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//        this.allColumns.get(1).addToColumn(0.0);
-//
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(9.0);
-//        this.allColumns.get(2).addToColumn(3.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//        this.allColumns.get(2).addToColumn(0.0);
-//
-//    }
-
     public <cls> void addRaw(Object[] args, ArrayList<Class <? extends Value>> columnTypes) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         if(args.length > allColumns.size()){
             throw new IllegalArgumentException("Too many arguments");
@@ -118,10 +54,6 @@ public class DataFrame implements Cloneable{
             v = ctr.newInstance(args[i].toString());
 
             allColumns.get(i).addToColumn((cls) v);
-
-            //cls d = (cls) v;
-
-//            ((Value) v).create(args[i].toString());
         }
     }
 
@@ -136,8 +68,7 @@ public class DataFrame implements Cloneable{
             }
         }
 
-        String strLine;
-        String splited;
+        String strLine, splited;
         String[] splitedArray;
 
         if(columnNames == null){
@@ -161,39 +92,41 @@ public class DataFrame implements Cloneable{
 
     protected class GroupedDF implements Groupby{
         LinkedList<DataFrame> listDF;
-        GroupedDF(DataFrame df, String[] colname) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-            HashMap<Integer, HashMap<Object, Integer>> mapOfMaps = new HashMap<>();
+        GroupedDF(DataFrame df, String[] namesColumns) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+
+            HashMap<Integer, HashMap<Object, Integer>> mapOfMaps = new HashMap<>(); //mapa w ktorej sa przefiltrowane mapy bez powtorzen,
+            //klucz - element DF, wartosc - wskazuje do ktorej wyjsciowej DF przekierowac element
+
             int sizeLinkedList = 1;
-            listDF = new LinkedList<DataFrame>();
-            for(int iter=0; iter<colname.length; iter++) {
-                Stream<Object> str = Arrays.stream(df.get(colname[iter]).getList().toArray());
-                List<Object> listStr = str.distinct().collect(Collectors.toList());
-                HashMap<Object, Integer> mapStream = new HashMap<>();
-                for (int pos = 0; pos < listStr.size(); pos++) {
-                    mapStream.put(listStr.get(pos), pos + 1);
-                }
-                int mapSize = mapStream.size();
-                sizeLinkedList = sizeLinkedList * mapSize;
+            listDF = new LinkedList<DataFrame>(); //lista z wyjsciowymi DF
+            for(int iter=0; iter<namesColumns.length; iter++) {
+                AtomicInteger i = new AtomicInteger(-1);
+                Stream<Object> str = Arrays.stream(df.get(namesColumns[iter]).getList().toArray());// z kolumny tworzymy stream
+                HashMap<Object, Integer> mapStream = str.distinct().collect(Collectors.toMap(p->p, p-> i.incrementAndGet(), (s1, s2) -> s2, HashMap::new));
+                //zostawiamy tylko unikalne elementy, tworzymy ze streama liste
+
+                sizeLinkedList = sizeLinkedList * mapStream.size();
                 mapOfMaps.put(iter, mapStream);
             }
-                for (int i = 0; i < sizeLinkedList; i++) {
+
+                for (int id = 0; id < sizeLinkedList; id++) {
                     listDF.add(new DataFrame(getNames(df), getTypes(df)));
                 }
 
-                Object[] raw = new Object[numOfColumns()];
+            Object[] raw = new Object[numOfColumns()];
+            List<Integer> mapSizes = new ArrayList<>();
+            mapOfMaps.forEach((k, v)-> mapSizes.add(v.size()));
+            mapSizes.add(1);
+            int index;
             for (int n = 0; n < df.size(); n++) {
                     for (int wid = 0; wid < df.numOfColumns(); wid++) {
                         raw[wid] = df.get(wid).getElem(n);
                     }
-                   int sizeMaps = mapOfMaps.size();
-                   double i = 10;
-                   double index=0;
-                   i = Math.pow(i, sizeMaps-1);
-                    for(int iter=0; iter<sizeMaps; iter++){
-                        index =index +  (mapOfMaps.get(iter).get(df.get(colname[iter]).getElem(n))-1)*i;
-                        i= i/10;
+                   index=0;
+                    for(int iter=0; iter<mapOfMaps.size(); iter++){
+                        index += (mapOfMaps.get(iter).get(df.get(namesColumns[iter]).getElem(n)))*mapSizes.get(iter+1);
                     }
-                    listDF.get((int)index).addRaw(raw, getTypes(df));
+                    listDF.get(index).addRaw(raw, getTypes(df));
                 }
             }
         void printGroups(){
@@ -201,10 +134,45 @@ public class DataFrame implements Cloneable{
                 df.printDF();
             }
         }
+
+        @Override
+        public DataFrame max() {
+            return null;
+        }
+
+        @Override
+        public DataFrame min() {
+            return null;
+        }
+
+        @Override
+        public DataFrame mean() {
+            return null;
+        }
+
+        @Override
+        public DataFrame std() {
+            return null;
+        }
+
+        @Override
+        public DataFrame sum() {
+            return null;
+        }
+
+        @Override
+        public DataFrame var() {
+            return null;
+        }
+
+        @Override
+        public DataFrame apply() {
+            return null;
+        }
     }
 
-    public GroupedDF groupby(String[] colname) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        return new GroupedDF(this, colname);
+    public GroupedDF groupby(String[] namesColumns) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        return new GroupedDF(this, namesColumns);
     }
 
 

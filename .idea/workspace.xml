@@ -4,7 +4,7 @@
     <list default="true" id="f4ef4f74-60bd-4bf3-a228-9d3a031b1868" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataFrame/Groupby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/Groupby.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +29,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../L1ZD — kopia" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
@@ -124,7 +124,9 @@
       <workItem from="1572616895688" duration="23105000" />
       <workItem from="1572899664380" duration="12135000" />
       <workItem from="1573406559756" duration="14126000" />
-      <workItem from="1573423062280" duration="5221000" />
+      <workItem from="1573423062280" duration="11382000" />
+      <workItem from="1573476121882" duration="4000" />
+      <workItem from="1573476290437" duration="6220000" />
     </task>
     <task id="LOCAL-00001" summary="lab3 jakoś działa">
       <created>1572708600520</created>
@@ -140,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573415277326</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="eeech.....">
+      <created>1573429628995</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573429628995</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,14 +170,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lab3 jakoś działa" />
-    <option name="LAST_COMMIT_MESSAGE" value="lab3 jakoś działa" />
+    <MESSAGE value="eeech....." />
+    <option name="LAST_COMMIT_MESSAGE" value="eeech....." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>274</line>
+          <line>242</line>
           <properties class="dataFrame.DataFrame">
             <option name="EMULATED" value="true" />
           </properties>
@@ -176,13 +186,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>24</line>
+          <line>21</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>183</line>
-          <option name="timeStamp" value="41" />
+          <line>132</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
