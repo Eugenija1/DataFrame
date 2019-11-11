@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataFrame/Groupby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/Groupby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/MyDouble.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -128,7 +127,7 @@
       <workItem from="1573406559756" duration="14126000" />
       <workItem from="1573423062280" duration="11382000" />
       <workItem from="1573476121882" duration="4000" />
-      <workItem from="1573476290437" duration="12268000" />
+      <workItem from="1573476290437" duration="15600000" />
     </task>
     <task id="LOCAL-00001" summary="lab3 jakoś działa">
       <created>1572708600520</created>
@@ -158,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573489546507</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="eeech.....">
+      <created>1573495622361</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573495622363</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +193,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/dataFrame/DataFrame.java</url>
-          <line>279</line>
+          <line>337</line>
           <properties class="dataFrame.DataFrame">
             <option name="EMULATED" value="true" />
           </properties>

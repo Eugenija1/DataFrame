@@ -159,32 +159,71 @@ public class DataFrame implements Cloneable{
         @Override
         public DataFrame max() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
             DataFrame maxDF = new DataFrame(getNames(listDF.get(0)), getTypes(listDF.get(0)));
-            for(int a=0; a<listDF.size(); a++){
-                Object[] raw = new Object[listDF.get(a).numOfColumns()];
-                int i =0 ;
-                ArrayList<String> notSortedColumns = getColumnsToSort(listDF.get(a));
-                for (int b =0; b<listDF.get(a).numOfColumns(); b++){
-                    if(! notSortedColumns.contains(listDF.get(a).get(b).getNameOfColumn())){
-                        raw[b] = listDF.get(a).get(b).getElem(0);
+            Object[] raw = new Object[listDF.get(0).numOfColumns()];
+            ArrayList<String> notSortedColumns = getColumnsToSort(listDF.get(0));
+
+            int i;
+            for(DataFrame df : listDF){
+                i =0 ;
+                for (int b =0; b<df.numOfColumns(); b++){
+                    if(! notSortedColumns.contains(df.get(b).getNameOfColumn())){
+                        raw[b] = df.get(b).getElem(0);
                     }
                     else{
-                        raw[b] = Collections.max(listDF.get(a).get(notSortedColumns.get(i)).getList());
+                        raw[b] = Collections.max(df.get(notSortedColumns.get(i)).getList());
                         i++;
                     }
             }
-            maxDF.addRaw(raw, getTypes(listDF.get(a)));
+            maxDF.addRaw(raw, getTypes(df));
             }
             return maxDF;
         }
 
         @Override
-        public DataFrame min() {
-            return null;
+        public DataFrame min() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+            DataFrame minDF = new DataFrame(getNames(listDF.get(0)), getTypes(listDF.get(0)));
+            Object[] raw = new Object[listDF.get(0).numOfColumns()];
+            ArrayList<String> notSortedColumns = getColumnsToSort(listDF.get(0));
+
+            int i;
+            for(DataFrame df : listDF){
+                i =0 ;
+                for (int b =0; b<df.numOfColumns(); b++){
+                    if(! notSortedColumns.contains(df.get(b).getNameOfColumn())){
+                        raw[b] = df.get(b).getElem(0);
+                    }
+                    else{
+                        raw[b] = Collections.min(df.get(notSortedColumns.get(i)).getList());
+                        i++;
+                    }
+                }
+                minDF.addRaw(raw, getTypes(df));
+            }
+            return minDF;
         }
 
         @Override
-        public DataFrame mean() {
-            return null;
+        public DataFrame mean() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+            DataFrame meanDF = new DataFrame(getNames(listDF.get(0)), getTypes(listDF.get(0)));
+            Object[] raw = new Object[listDF.get(0).numOfColumns()];
+            ArrayList<String> notSortedColumns = getColumnsToSort(listDF.get(0));
+            int i=0;
+            for(DataFrame df : listDF){
+                for(int b =0; b<df.numOfColumns(); b++){
+                    if(! notSortedColumns.contains(df.get(b).getNameOfColumn())){
+                        raw[b] = df.get(b).getElem(0);
+                    }
+                    else{
+                        MyDouble dbl = (MyDouble) df.get(b).getElem(0);
+                        for(int el=1; el<df.get(b).sizeColumn(); el++){
+                            dbl.add(((MyDouble) df.get(b).getElem(el)));
+                        }
+                        raw[b]= dbl.getDouble()/df.get(b).sizeColumn();
+                    }
+                }
+                meanDF.addRaw(raw, getTypes(df));
+            }
+            return meanDF;
         }
 
         @Override
@@ -193,8 +232,27 @@ public class DataFrame implements Cloneable{
         }
 
         @Override
-        public DataFrame sum() {
-            return null;
+        public DataFrame sum() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+            DataFrame sumDF = new DataFrame(getNames(listDF.get(0)), getTypes(listDF.get(0)));
+            Object[] raw = new Object[listDF.get(0).numOfColumns()];
+            ArrayList<String> notSortedColumns = getColumnsToSort(listDF.get(0));
+            int i=0;
+            for(DataFrame df : listDF){
+                for(int b =0; b<df.numOfColumns(); b++){
+                    if(! notSortedColumns.contains(df.get(b).getNameOfColumn())){
+                        raw[b] = df.get(b).getElem(0);
+                    }
+                    else{
+                        MyDouble dbl = (MyDouble) df.get(b).getElem(0);
+                        for(int el=1; el<df.get(b).sizeColumn(); el++){
+                            dbl.add(((MyDouble) df.get(b).getElem(el)));
+                        }
+                        raw[b]= dbl.getDouble();
+                    }
+                }
+                sumDF.addRaw(raw, getTypes(df));
+            }
+            return sumDF;
         }
 
         @Override
