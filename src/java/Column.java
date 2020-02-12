@@ -1,4 +1,4 @@
-package dataFrame;
+package java;
 
 import java.util.ArrayList;
 
@@ -7,13 +7,11 @@ public class Column<Value> implements Cloneable{
     private Class type;
     private ArrayList<Value> arr;
 
+    Column(){}
+
     Column(String nameColumn, Class type_){
         this.nameCol = nameColumn;
         this.type = type_;
-//        switch(type){
-//            case "double":
-//                arr = (ArrayList<Value>) new ArrayList<Double>();
-//        }
         arr = new ArrayList<>();
     }
 

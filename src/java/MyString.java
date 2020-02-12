@@ -1,4 +1,4 @@
-package dataFrame;
+package java;
 
 public class MyString extends Value{
     public MyString(String d){
@@ -22,10 +22,10 @@ public class MyString extends Value{
         return this.getString().equals(((MyString) val).getString());
     };
     public boolean lte(Value val){
-        return this.getString().length() < ((MyString) val).getString().length();
+        return this.getString().charAt(0) < ((MyString) val).getString().charAt(0);
     };
     public boolean gte(Value val){
-        return this.getString().length() > ((MyString) val).getString().length();
+        return this.getString().charAt(0) > ((MyString) val).getString().charAt(0);
     };
     public boolean neq(Value val){
         return !getString().equals(((MyString) val).getString());

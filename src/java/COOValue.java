@@ -1,4 +1,4 @@
-package dataFrame;
+package java;
 
 import java.util.Objects;
 
@@ -138,7 +138,7 @@ public  class COOValue extends Value{
         return Objects.hash(position, element);
     }
 
-    public Value create(String s){ //TODO
+    public Value create(String s){
         this.val = java.lang.Double.parseDouble(s);
         return this;
     };

@@ -1,10 +1,12 @@
-package dataFrame;
+package java;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class DataFrameBD extends DataFrame {
@@ -38,7 +40,7 @@ public class DataFrameBD extends DataFrame {
         try {
             FileInputStream fileStream = new FileInputStream(filename);
             BufferedReader br = new BufferedReader(new InputStreamReader(fileStream));
-            
+
             String strLine, splited;
             String[] splitedArray;
 
@@ -47,23 +49,23 @@ public class DataFrameBD extends DataFrame {
             splitedArray = splited.split(",");
             names = splitedArray;
 
-        Statement stmt = c.createStatement();
-        String sql = "CREATE TABLE IF NOT EXISTS tabela (\n"
+            Statement stmt = c.createStatement();
+            String sql = "CREATE TABLE IF NOT EXISTS tabela (\n"
                     //+ "    keys INTEGER PRIMARY KEY AUTOINCREMENT,\n"
                     + "    id char,\n"
                     + "    date text NOT NULL,\n"
                     + "    total real,\n"
                     + "    val real\n"
                     + ");";
-        stmt.execute(sql);
-        System.out.println("executed");
+            stmt.execute(sql);
+            System.out.println("executed");
             while ((strLine = br.readLine()) != null)  {
                 splited = strLine;
                 splitedArray = splited.split(",");
                 insert(splitedArray, names);
             }
-          br.close();
-          printTable(names);
+            br.close();
+            printTable(names);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -89,8 +91,8 @@ public class DataFrameBD extends DataFrame {
         DataFrame df2= new DataFrame(names, typesCol);
 
         try (
-             Statement stmt  = c.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+                Statement stmt  = c.createStatement();
+                ResultSet rs    = stmt.executeQuery(sql)){
             // loop through the result set
             Object[] v = new Object[df2.numOfColumns()];
             while (rs.next()) {
@@ -121,9 +123,9 @@ public class DataFrameBD extends DataFrame {
             }
             rs.close();
             stmt.close();
-            } catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
-            }
+        }
     }
 
     @Override
@@ -163,7 +165,7 @@ public class DataFrameBD extends DataFrame {
                             rs2.getDouble("max_total") + "\t" +
                             rs2.getDouble("max_val"));
                 }
-                } catch (SQLException ex) {
+            } catch (SQLException ex) {
                 ex.printStackTrace();
             }
             return new DataFrameBD();
@@ -252,7 +254,7 @@ public class DataFrameBD extends DataFrame {
         types.add(MyString.class);
         types.add(MyDouble.class);
         types.add(MyDouble.class);
-        DataFrameBD db = new DataFrameBD("C:\\Users\\Berezka\\IdeaProjects\\L1ZD\\src\\Книга1.csv", types);
+        DataFrameBD db = new DataFrameBD("csv_files/groubymulti.csv", types);
         db.iloc(2, 4);
         db.groupby(new String[]{"id"}).max();
 

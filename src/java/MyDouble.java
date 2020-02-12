@@ -1,4 +1,4 @@
-package dataFrame;
+package java;
 
 import java.util.Objects;
 
@@ -9,6 +9,7 @@ public class MyDouble extends Value implements Comparable {
         this.val = Double.parseDouble(d);
     }
     public double getDouble(){return (double) this.val;}
+
 
     public String toString(){
         return String.valueOf(this.val);
