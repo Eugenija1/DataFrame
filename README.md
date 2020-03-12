@@ -3,7 +3,7 @@
 
 ## Techonologies
 - java 11
-- libraries: Swing, awt
+- libraries: Swing, AWT
 - connection with SQLite
 
 ## Features
