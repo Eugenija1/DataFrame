@@ -16,7 +16,7 @@ public class Frame extends JFrame {
         setLocation(100,50);
         setLayout(new FlowLayout());
 
-        JFileChooser fileChooser = new JFileChooser("C:\\Users\\Berezka\\IdeaProjects\\L1ZD\\src");
+        JFileChooser fileChooser = new JFileChooser("/Users/marinalukacik/Documents/DataFrame/src");
         fileChooser.setFileFilter(new FileNameExtensionFilter("CSV files", "csv"));
         add(fileChooser);
 

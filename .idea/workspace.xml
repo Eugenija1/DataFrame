@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4ef4f74-60bd-4bf3-a228-9d3a031b1868" name="Default Changelist" comment="&#10;j">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/ant_ant_swing_1_6_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_xerial_sqlite_jdbc_3_27_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/DataFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/Frame.java" afterDir="false" />
+    <list default="true" id="0a76abfc-2794-4250-9746-720c68e7ac0b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataFrame.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ant_ant_swing_1_6_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/org_xerial_sqlite_jdbc_3_27_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/L1ZD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/L1ZD.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/L1ZD/META-INF/L1ZD.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/csv_files/data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/COOValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/COOValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Column.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/DataFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/DataFrameBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/DataFrameBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/DateTime.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/Groupby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Groupby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/MyDouble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/MyFloat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyInteger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/MyInteger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/MyString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/MyString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/SparseDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/SparseDataFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataFrame/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Value.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sparse.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/csv_files/sparse.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/DataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/DataFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Frame.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,64 +24,26 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
-    <execution>
-      <executable />
-    </execution>
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="JavaFXApplication" />
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="C:\Users\Berezka\IdeaProjects\L1ZD\.idea" />
-      </set>
-    </option>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
-  <component name="ProjectId" id="1RnbZp6a2XcUbbweF1ScLP0frNx" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1ZU162BGAtH3Oq192IxXQ7AsfOR" />
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="sqlite" />
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/csv_files" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Berezka\IdeaProjects\L1ZD\src" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -105,10 +58,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Frame">
+  <component name="RunManager" selected="Application.DataFrame">
     <configuration name="DataFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="java.DataFrame" />
-      <module name="L1ZD" />
+      <module name="DataFrame" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="java.*" />
@@ -121,46 +74,7 @@
     </configuration>
     <configuration name="DataFrameBD" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="java.DataFrameBD" />
-      <module name="L1ZD" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Frame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="java.Frame" />
-      <module name="L1ZD" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InsertApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dataFrame.InsertApp" />
-      <module name="L1ZD" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ThreadGDF" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dataFrame.ThreadGDF" />
-      <module name="L1ZD" />
+      <module name="DataFrame" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="java.*" />
@@ -173,127 +87,24 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Frame" />
-        <item itemvalue="Application.DataFrameBD" />
         <item itemvalue="Application.DataFrame" />
-        <item itemvalue="Application.ThreadGDF" />
-        <item itemvalue="Application.InsertApp" />
+        <item itemvalue="Application.DataFrameBD" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@d4b8060a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f4ef4f74-60bd-4bf3-a228-9d3a031b1868" name="Default Changelist" comment="" />
-      <created>1570305864149</created>
+      <changelist id="0a76abfc-2794-4250-9746-720c68e7ac0b" name="Default Changelist" comment="" />
+      <created>1584878679787</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1570305864149</updated>
-      <workItem from="1570305868699" duration="22517000" />
-      <workItem from="1570434393198" duration="1200000" />
-      <workItem from="1570552050011" duration="14000" />
-      <workItem from="1570910721150" duration="52353000" />
-      <workItem from="1571501140481" duration="49366000" />
-      <workItem from="1572096163128" duration="5611000" />
-      <workItem from="1572293330733" duration="11301000" />
-      <workItem from="1572616895688" duration="23105000" />
-      <workItem from="1572899664380" duration="12135000" />
-      <workItem from="1573406559756" duration="14126000" />
-      <workItem from="1573423062280" duration="11382000" />
-      <workItem from="1573476121882" duration="4000" />
-      <workItem from="1573476290437" duration="16601000" />
-      <workItem from="1573504830378" duration="5270000" />
-      <workItem from="1573542430086" duration="987000" />
-      <workItem from="1573543632679" duration="91000" />
-      <workItem from="1574021919586" duration="6393000" />
-      <workItem from="1574148488343" duration="4186000" />
-      <workItem from="1574342621705" duration="6000" />
-      <workItem from="1574347884682" duration="15000" />
-      <workItem from="1574714414776" duration="7543000" />
-      <workItem from="1574752477790" duration="4130000" />
-      <workItem from="1574783476938" duration="5000" />
-      <workItem from="1575312993535" duration="12786000" />
-      <workItem from="1575356822404" duration="4482000" />
-      <workItem from="1575829610189" duration="15546000" />
-      <workItem from="1575897032919" duration="11325000" />
-      <workItem from="1575963403101" duration="2973000" />
-      <workItem from="1576015533302" duration="85000" />
-      <workItem from="1576322530517" duration="4004000" />
-      <workItem from="1576408881068" duration="7199000" />
-      <workItem from="1576494970044" duration="6282000" />
-      <workItem from="1576567695576" duration="3616000" />
-      <workItem from="1578153211786" duration="616000" />
-      <workItem from="1578652324441" duration="30000" />
-      <workItem from="1578783370795" duration="616000" />
-      <workItem from="1581511060285" duration="3555000" />
+      <updated>1584878679787</updated>
+      <workItem from="1584878681138" duration="422000" />
+      <workItem from="1584880131214" duration="634000" />
     </task>
-    <task id="LOCAL-00001" summary="lab3 jakoś działa">
-      <created>1572708600520</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1572708600520</updated>
-    </task>
-    <task id="LOCAL-00002" summary="lab3 jakoś działa">
-      <created>1573415277326</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1573415277326</updated>
-    </task>
-    <task id="LOCAL-00003" summary="eeech.....">
-      <created>1573429628995</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1573429628995</updated>
-    </task>
-    <task id="LOCAL-00004" summary="eeech.....">
-      <created>1573489546504</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1573489546507</updated>
-    </task>
-    <task id="LOCAL-00005" summary="eeech.....">
-      <created>1573495622361</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1573495622363</updated>
-    </task>
-    <task id="LOCAL-00006" summary="&#10;j">
-      <created>1573499037671</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1573499037671</updated>
-    </task>
-    <task id="LOCAL-00007" summary="&#10;j">
-      <created>1575923604681</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1575923604681</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,39 +122,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="lab3 jakoś działa" />
-    <MESSAGE value="eeech....." />
-    <MESSAGE value="&#10;j" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;j" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/java/Frame.java</url>
-          <line>43</line>
-          <properties class="java.Frame" method="main">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/java/DataFrame.java</url>
-          <line>166</line>
-          <properties class="java.DataFrame.GroupedDF" method="max">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="types" />
-        <watch expression="types" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
